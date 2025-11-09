@@ -16,12 +16,12 @@ public class PostPublisher {
 
     public void publish(Post p) {
         try {
-            // insert to DB and retrieve id
+            // masukan data ke DB serta menset id
             int id = postsDAO.insert(p);
             p.setId(id);
-            queue.offer(p); // notify background service
+            queue.offer(p); // berfungsi untuk memasukan antrian untuk notifikasi
         } catch (Exception e) {
-            System.err.println("Failed to publish post: " + e.getMessage());
+            System.err.println("Gagal dalam membuat post baru: " + e.getMessage());
         }
     }
 }
